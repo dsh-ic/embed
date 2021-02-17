@@ -52,8 +52,8 @@ def ahrs():
 	fall = False
 	#for _ in range(10):
 	while True:
-		a, m, g = imu.get()
-		r, p, h = imu.getOrientation(a, m)
+		a, m, g = imu.get()# get data from nxp-9dof fxos8700 + fxas21002
+		r, p, h = imu.getOrientation(a, m) # convert sensor data to angle in roll,pitch,yaw axis
 		print('| {:>6.1f} {:>6.1f} {:>6.1f} | {:>6.1f} {:>6.1f} {:>6.1f} |'.format(a[0], a[1], a[2], r, p, h))
 		time.sleep(1)
 
@@ -84,10 +84,10 @@ def ahrs():
 if __name__ == "__main__":
 	try:
 		ahrs()
-		imu()
+		#imu()
 	except Exception as e:
 		print(e)
 	except KeyboardInterrupt:
 		pass
 
-	print('Done ...')
+	#print('Done ...')
