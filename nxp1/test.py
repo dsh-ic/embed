@@ -69,7 +69,7 @@ def ahrs():
 
 		if fall:
 			print("the flower pot fall over")
-	        else:
+	        else :
 		        print("nothing wrong")
 
 
