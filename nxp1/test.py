@@ -80,7 +80,6 @@ def ahrs():
 	#print('deg: degree')
 	#print('')
 
-
 if __name__ == "__main__":
 	try:
 		ahrs()
