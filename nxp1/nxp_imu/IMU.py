@@ -65,7 +65,7 @@ class IMU(object):
 
         return (accel, mag, gyro)
 
-    def getOrientation(self, accel, mag, deg=False):
+    def getOrientation(self, accel, mag, deg=True):
         """
         From AN4248.pdf
         roll: eqn 13
