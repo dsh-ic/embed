@@ -68,7 +68,7 @@ def ahrs():
 			fall =False
 
 		if fall:
-			print("the flower pot is fall over")
+			print("the flower pot fall over")
 	        #else:
 		        #print("nothing wrong")
 
