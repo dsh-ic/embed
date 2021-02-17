@@ -66,11 +66,11 @@ def ahrs():
 			fall = True
 		else:
 			fall =False
-
 		if fall:
-			print("the flower pot fall over")
-	        else :
-		        print("nothing wrong")
+			print("the flower pot is fall over")
+		else:
+			print("nothing wrong")
+
 
 
 	#print('-'*header)
