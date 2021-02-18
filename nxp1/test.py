@@ -45,36 +45,38 @@ def imu():
 #this function convert sensor data to roll,pitch and yaw. However,yaw is not accurate enough without use of kalman filter and
 # other alogorithm such as sensor fusion. stepper motor may use instead
 def ahrs():
-	print('')
+	#print('')
 	imu = IMU(verbose=True)
 	header = 47
-	print('-'*header)
-	print("| {:20} | {:20} |".format("Accels [g's]", "Orient(r,p,h) [deg]"))
-	print('-'*header)
+	#print('-'*header)
+	#print("| {:20} | {:20} |".format("Accels [g's]", "Orient(r,p,h) [deg]"))
+	#print('-'*header)
 	fall = False
 	#for _ in range(10):
-	i=0
-	while i in range(0,10):
-		a, m, g = imu.get()# get data from nxp-9dof fxos8700 + fxas21002
-		r, p, h = imu.getOrientation(a, m) # convert sensor data to angle in roll,pitch,yaw axis
-		#print the angle data
-		#print('| {:>6.1f} {:>6.1f} {:>6.1f} | {:>6.1f} {:>6.1f} {:>6.1f} |'.format(a[0], a[1], a[2], r, p, h))
-		time.sleep(1)
+	a, m, g = imu.get()# get data from nxp-9dof fxos8700 + fxas21002
+	r, p, h = imu.getOrientation(a, m) # convert sensor data to angle in roll,pitch,yaw axis
+	#print the angle data
+	#print('| {:>6.1f} {:>6.1f} {:>6.1f} | {:>6.1f} {:>6.1f} {:>6.1f} |'.format(a[0], a[1], a[2], r, p, h))
+	time.sleep(1)
 
-		r = abs(r)
-		p = abs(p)
-		#h =abs(h)
+	r = abs(r)
+	p = abs(p)
+	#h =abs(h)
 
-		if r>50 or p>50 :
-			fall = True
-		else:
-			fall =False
-		if fall:
-			print("the flower pot is fall over")
-		else:
-			print("nothing wrong")
-		i=i+1
+	if r>50 or p>50 :
+		fall = True
+	else:
+		fall =False
+		
+        return fall
 
+def combine():
+    while ture:
+        flower = arch()
+        data=bmp280_readdata(0x77)
+	p=bmp280_convert(data)
+	t=bmp280_checktemp(data)
+        publish_data(temp,hum,p,flower)
 
 
 	#print('-'*header)
@@ -89,18 +91,18 @@ if __name__ == "__main__":
 	try:
 		#ahrs()
 		#imu()
-		flower = 'fall'
-		data=bmp280_readdata(0x77)
-		p=bmp280_convert(data)
-		t=bmp280_checktemp(data)
-		print(p)
-		print(t)
+		#flower = 'fall'
+		#data=bmp280_readdata(0x77)
+		#p=bmp280_convert(data)
+		#t=bmp280_checktemp(data)
+		#print(p)
+		#print(t)
 		#temp=temp()
 		#hum=hum()
 		#print ("Humidity %%RH: %.2f%%" %hum)
 		#print ("Temperature Celsius: %.2f°C" %temp)
-		publish_data(temp,hum,p,flower)
-		
+		#publish_data(temp,hum,p,flower)
+		combine()
 	except Exception as e:
 		print(e)
 	except KeyboardInterrupt:
