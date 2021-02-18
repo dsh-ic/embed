@@ -3,7 +3,7 @@
 from __future__ import division, print_function
 from nxp_imu import IMU
 import time
-from bmp280 import bmp280_readata,bmp280_convert
+from bmp280 import bmp280_readdata,bmp280_convert
 
 """
 accel/mag - 0x1f
