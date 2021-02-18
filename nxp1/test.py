@@ -93,8 +93,9 @@ if __name__ == "__main__":
 		print(p)
 		temp=read_temp
 		hum=read_hum
-		print(hum)
-                print(temp)
+		print ("Humidity %%RH: %.2f%%" %hum)
+		print ("Temperature Celsius: %.2f°C" %temp)
+		
 	except Exception as e:
 		print(e)
 	except KeyboardInterrupt:
