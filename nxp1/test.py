@@ -84,7 +84,7 @@ def ahrs():
 
 if __name__ == "__main__":
 	try:
-		ahrs()
+		#ahrs()
 		#imu()
 		data=bmp280_readdata(0x77)
 		p=bmp280_convert(data)
