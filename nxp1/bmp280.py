@@ -1,7 +1,7 @@
-import smbus2
+from smbus2 import SMBus 
 import time
 
-bus = smbus2.bus(1)
+bus = SMBus.bus(1)
 
 #bmp_280 address
 bmp_addr=0x77
