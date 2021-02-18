@@ -3,7 +3,7 @@
 from __future__ import division, print_function
 from nxp_imu import IMU
 import time
-from bmp280 import bmp280_readdata,bmp280_convert
+from bmp280 import bmp280_readdata,bmp280_convert,bmp280_checktemp
 from si import hum,temp
 from mqtt import publish_data
 """
@@ -92,11 +92,13 @@ if __name__ == "__main__":
 		flower = 'fall'
 		data=bmp280_readdata(0x77)
 		p=bmp280_convert(data)
+		t=bmp280_checktemp(data)
 		print(p)
-		temp=temp()
-		hum=hum()
-		print ("Humidity %%RH: %.2f%%" %hum)
-		print ("Temperature Celsius: %.2f°C" %temp)
+		print(t)
+		#temp=temp()
+		#hum=hum()
+		#print ("Humidity %%RH: %.2f%%" %hum)
+		#print ("Temperature Celsius: %.2f°C" %temp)
 		publish_data(temp,hum,p,flower)
 		
 	except Exception as e:
