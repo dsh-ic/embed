@@ -87,7 +87,7 @@ def ahrs():
 
 if __name__ == "__main__":
 	try:
-		ahrs()
+		#ahrs()
 		#imu()
 		flower = 'fall'
 		data=bmp280_readdata(0x77)
