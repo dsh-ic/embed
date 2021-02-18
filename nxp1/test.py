@@ -52,7 +52,8 @@ def ahrs():
 	print('-'*header)
 	fall = False
 	#for _ in range(10):
-	while True:
+	i=0
+	while i in range(0,10):
 		a, m, g = imu.get()# get data from nxp-9dof fxos8700 + fxas21002
 		r, p, h = imu.getOrientation(a, m) # convert sensor data to angle in roll,pitch,yaw axis
 		#print the angle data
@@ -71,6 +72,7 @@ def ahrs():
 			print("the flower pot is fall over")
 		else:
 			print("nothing wrong")
+		i=i+1
 
 
 
@@ -84,7 +86,7 @@ def ahrs():
 
 if __name__ == "__main__":
 	try:
-		#ahrs()
+		ahrs()
 		#imu()
 		data=bmp280_readdata(0x77)
 		p=bmp280_convert(data)
