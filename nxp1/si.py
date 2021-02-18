@@ -2,7 +2,7 @@ import smbus2
 import time
 
 bus = smbus2.SMBus(1)
-si_sddr = 0x40
+si_addr = 0x40
 def temp():
   # Read data , 2 bytes, Temperature MSB first
       temp = bus.read_i2c_block_data(si_addr, 0xE3,2)
