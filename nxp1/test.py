@@ -89,5 +89,12 @@ if __name__ == "__main__":
 		print(e)
 	except KeyboardInterrupt:
 		pass
-
-	#print('Done ...')
+	try:
+		data=bmp280_readdata(0x77)
+		p=bmp280_convert(data)
+		print(p)
+	except Exception as e:
+		print(e)
+	except KeyboardInterrupt:
+		pass
+	#print('Done ...'
