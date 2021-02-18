@@ -4,7 +4,7 @@ from __future__ import division, print_function
 from nxp_imu import IMU
 import time
 from bmp280 import bmp280_readdata,bmp280_convert
-from si7021 import temp,shidu
+from si import shidu
 """
 accel/mag - 0x1f
 gyro - 0x21
@@ -91,10 +91,10 @@ if __name__ == "__main__":
 		data=bmp280_readdata(0x77)
 		p=bmp280_convert(data)
 		print(p)
-		temp=temp()
+		#temp=temp()
 		hum=shidu()
 		print ("Humidity %%RH: %.2f%%" %hum)
-		print ("Temperature Celsius: %.2f°C" %temp)
+		#print ("Temperature Celsius: %.2f°C" %temp)
 		
 	except Exception as e:
 		print(e)
