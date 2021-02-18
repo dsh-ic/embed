@@ -12,7 +12,7 @@ client.on_message = on_message
 client.subscribe("IC.embedded/Team_ALG/#")
 
 def publish_data(temp,hum,pressure,flower_pot):
-  payload=json.dumps({"temp":temp,"humidity":hum,"pressure":pressure,"flowerpot"=flower_pot})
+  payload=json.dumps({"temp":temp,"humidity":hum,"pressure":pressure,"flowerpot":flower_pot})
   client.publish("IC.embedded/Team_ALG/test",payload)
   #default keep alive is 60s,thus we need at least 1 imformation change between broker and client per minutes#
   
