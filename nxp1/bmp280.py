@@ -1,7 +1,7 @@
 import smbus2
 import time
 
-bus = smbus2.SMBus(1)
+bus = smbus2.bus(1)
 
 #bmp_280 address
 bmp_addr=0x77
@@ -71,7 +71,7 @@ def bmp280_readdata(bmp_addr):#read once per call
     # BMP280 address, 0x77(118)
     # Select Configuration register, 0xF5(245)
     # 0xA0(00) Stand_by time = 1000 ms
-    bus.write_byte_data(bmp_addr, 0xF5, 0xA0)
+    bus.write_byte_data(bp_addr, 0xF5, 0xA0)
     time.sleep(0.5)
     # BMP280 address, 0x77(118)
     # Read data back from 0xF7(247), 8 bytes
