@@ -104,3 +104,17 @@ def bmp280_convert(data):
     var2 = p * (dig_P8) / 32768.0
     pressure = (p + (var1 + var2 + (dig_P7)) / 16.0) / 100
     return pressure
+
+def bmp280_checktemp(data):
+    # Convert pressure and temperature data to 19-bits
+    adc_p = ((data[0] * 65536) + (data[1] * 256) + (data[2] & 0xF0)) / 16
+    adc_t = ((data[3] * 65536) + (data[4] * 256) + (data[5] & 0xF0)) / 16
+    # Temperature offset calculations
+    var1 = ((adc_t) / 16384.0 - (dig_T1) / 1024.0) * (dig_T2)
+    var2 = (((adc_t) / 131072.0 - (dig_T1) / 8192.0) * ((adc_t) / 131072.0 - (dig_T1) / 8192.0)) * (dig_T3)
+    t_fine = var1+var2 
+    cTemp = (var1 + var2) / 5120.0
+    fTemp = cTemp * 1.8 + 32
+    # Pressure offset calculations
+    
+    return cTemp
