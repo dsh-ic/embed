@@ -62,7 +62,7 @@ if dig_P9 > 32767:
 # Select Control measurement register, 0xF4(244)
 # 0x27(39) Pressure and Temperature Oversampling rate = 1
 # Normal mode
-bus.write_byte_data(bmp_addr, 0xF4, 0x27)
+bus.write_byte_data(bmp_addr, 0xF4, 0x57)
 
 # data: read from sensor
 
@@ -70,8 +70,8 @@ bus.write_byte_data(bmp_addr, 0xF4, 0x27)
 def bmp280_readdata(bmp_addr):#read once per call
     # BMP280 address, 0x77(118)
     # Select Configuration register, 0xF5(245)
-    # 0xA0(00) Stand_by time = 1000 ms
-    bus.write_byte_data(bmp_addr, 0xF5, 0xA0)
+    # 0xA0(00) Stand_by time = 62.5 ms
+    bus.write_byte_data(bmp_addr, 0xF5, 0x34)
     time.sleep(0.5)
     # BMP280 address, 0x77(118)
     # Read data back from 0xF7(247), 8 bytes
