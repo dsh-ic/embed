@@ -20,6 +20,6 @@ def hum():
       time.sleep(0.1)
 # Convert the data
       humidity = ((rh[0] * 256 + rh[1]) * 125 / 65536.0) - 6
-      return humidty
+      return humidity
 
  
