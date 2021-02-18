@@ -4,7 +4,7 @@ from __future__ import division, print_function
 from nxp_imu import IMU
 import time
 from bmp280 import bmp280_readdata,bmp280_convert
-from si7021 import read_temp,read_hum
+from si7021 import read_temp,read_hu
 """
 accel/mag - 0x1f
 gyro - 0x21
@@ -91,8 +91,8 @@ if __name__ == "__main__":
 		data=bmp280_readdata(0x77)
 		p=bmp280_convert(data)
 		print(p)
-		temp=read_temp
-		hum=read_hum
+		temp=read_temp()
+		hum=read_hu()
 		print ("Humidity %%RH: %.2f%%" %hum)
 		print ("Temperature Celsius: %.2f°C" %temp)
 		
