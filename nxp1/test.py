@@ -5,6 +5,7 @@ from nxp_imu import IMU
 import time
 from bmp280 import bmp280_readdata,bmp280_convert
 from si import hum,temp
+from mqtt import publish_data
 """
 accel/mag - 0x1f
 gyro - 0x21
@@ -88,6 +89,7 @@ if __name__ == "__main__":
 	try:
 		ahrs()
 		#imu()
+		flower = 'fall'
 		data=bmp280_readdata(0x77)
 		p=bmp280_convert(data)
 		print(p)
@@ -95,6 +97,7 @@ if __name__ == "__main__":
 		hum=hum()
 		print ("Humidity %%RH: %.2f%%" %hum)
 		print ("Temperature Celsius: %.2f°C" %temp)
+		publish_data(temp,hum,p,flower)
 		
 	except Exception as e:
 		print(e)
