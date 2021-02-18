@@ -6,7 +6,7 @@ bus = smbus2.SMBus(1)
 # SI7021 address, 0x40(64)
 
 si_addr=0x40
-define read_hum():
+define read_hu():
   rh = bus.read_i2c_block_data(si_addr, 0xE5, 2) 
 # sends a 0xE5 command (measure RH, hold master mode) and read 2 bytes back
   time.sleep(0.1)
