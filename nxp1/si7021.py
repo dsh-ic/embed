@@ -24,4 +24,4 @@ define read_temp():
 # Convert the data
   Temp = ((temp[0] * 256 + temp[1]) * 175.72 / 65536.0) - 46.85
   return Temp
-
+#
